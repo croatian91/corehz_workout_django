@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    environment:
+      - SECRET_KEY=0f6hzkubc-zz@*msg6%p#beh#!udy2ofj!nq@t_2as7mk=^&so
+      - DJANGO_SUPERUSER_USERNAME=test
+      - DJANGO_SUPERUSER_PASSWORD=test
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
