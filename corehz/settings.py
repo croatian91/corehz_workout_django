@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    "graphene_django",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -85,6 +86,9 @@ DATABASES = {
         "PORT": os.environ.get("DB_PORT", 5432),
     }
 }
+
+# GraphQL
+GRAPHENE = {"SCHEMA": "corehz.schema.schema"}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
